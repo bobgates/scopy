@@ -96,6 +96,8 @@ public:
 	bool getDigital_decoders_enabled() const;
 	void setDigital_decoders_enabled(bool value);
 
+	QStringList getLanguageList();
+
 Q_SIGNALS:
 
 	void notify();
@@ -127,6 +129,7 @@ private:
 	bool mini_hist_enabled;
 	bool digital_decoders_enabled;
 	bool m_initialized;
+	QString language;
 
 	Preferences_API *pref_api;
 	QString getPreferenceIniFile() const;
@@ -152,6 +155,7 @@ class Preferences_API : public ApiObject
 	Q_PROPERTY(bool osc_filtering_enabled READ getOscFilteringEnabled WRITE setOscFilteringEnabled)
 	Q_PROPERTY(bool mini_hist_enabled READ getMiniHist WRITE setMiniHist)
 	Q_PROPERTY(bool digital_decoders READ getDigitalDecoders WRITE setDigitalDecoders)
+	Q_PROPERTY(QString language READ getLanguage WRITE setLanguage);
 
 public:
 
@@ -203,6 +207,9 @@ public:
 
 	bool getDigitalDecoders() const;
 	void setDigitalDecoders(bool enabled);
+
+	QString getLanguage() const;
+	void setLanguage(QString lang);
 
 private:
 	Preferences *preferencePanel;
